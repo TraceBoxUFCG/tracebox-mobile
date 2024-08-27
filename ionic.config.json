@@ -1,0 +1,7 @@
+{
+  "name": "tracebox-mobile",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "custom"
+}
