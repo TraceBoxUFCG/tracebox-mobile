@@ -2,7 +2,8 @@
 
 <template>
   <nav class="flex h-16 w-full flex-row items-center justify-between border-b bg-muted/40 px-6">
-    Tracebox
+    <RouterLink to="/"> Tracebox </RouterLink>
+    <TopBarCalendar />
     <DropdownMenu>
       <DropdownMenuTrigger>
         <Avatar>

@@ -175,6 +175,7 @@ declare module 'vue' {
     ToastProvider: typeof import('./src/components/ui/toast/ToastProvider.vue')['default']
     ToastTitle: typeof import('./src/components/ui/toast/ToastTitle.vue')['default']
     ToastViewport: typeof import('./src/components/ui/toast/ToastViewport.vue')['default']
+    TopBarCalendar: typeof import('./src/components/layout/main/TopBarCalendar.vue')['default']
     TopNavbar: typeof import('./src/components/layout/main/TopNavbar.vue')['default']
   }
 }
