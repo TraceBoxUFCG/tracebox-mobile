@@ -20,6 +20,6 @@ declare module 'vue-router/auto-routes' {
   export interface RouteNamedMap {
     '/': RouteRecordInfo<'/', '/', Record<never, never>, Record<never, never>>,
     '/[...catchAll]': RouteRecordInfo<'/[...catchAll]', '/:catchAll(.*)', { catchAll: ParamValue<true> }, { catchAll: ParamValue<false> }>,
-    '/pago/': RouteRecordInfo<'/pago/', '/pago', Record<never, never>, Record<never, never>>,
+    '/qrcode/': RouteRecordInfo<'/qrcode/', '/qrcode', Record<never, never>, Record<never, never>>,
   }
 }

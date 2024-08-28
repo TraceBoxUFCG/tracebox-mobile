@@ -1,7 +1,7 @@
 <script setup lang="ts"></script>
 
 <template>
-  <nav class="flex h-16 flex-row items-center justify-between gap-2 border-b bg-muted/40 px-6">
+  <nav class="flex h-16 w-full flex-row items-center justify-between border-b bg-muted/40 px-6">
     Tracebox
     <DropdownMenu>
       <DropdownMenuTrigger>

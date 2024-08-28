@@ -100,6 +100,7 @@ declare module 'vue' {
     HoverCardTrigger: typeof import('./src/components/ui/hover-card/HoverCardTrigger.vue')['default']
     Input: typeof import('./src/components/ui/input/Input.vue')['default']
     Label: typeof import('./src/components/ui/label/Label.vue')['default']
+    NavCard: typeof import('./src/components/layout/main/NavCard.vue')['default']
     NumberField: typeof import('./src/components/ui/number-field/NumberField.vue')['default']
     NumberFieldContent: typeof import('./src/components/ui/number-field/NumberFieldContent.vue')['default']
     NumberFieldDecrement: typeof import('./src/components/ui/number-field/NumberFieldDecrement.vue')['default']
