@@ -6,6 +6,9 @@
 export {}
 declare global {
   const EffectScope: typeof import('vue')['EffectScope']
+  const PurchaseOrderStatusEnum: typeof import('./src/types/purchaseOrder')['PurchaseOrderStatusEnum']
+  const StatesEnum: typeof import('./src/types/common')['StatesEnum']
+  const UnitEnum: typeof import('./src/types/common')['UnitEnum']
   const acceptHMRUpdate: typeof import('pinia')['acceptHMRUpdate']
   const computed: typeof import('vue')['computed']
   const createApp: typeof import('vue')['createApp']
@@ -59,6 +62,7 @@ declare global {
   const useCssVars: typeof import('vue')['useCssVars']
   const useDateStore: typeof import('./src/stores/date')['useDateStore']
   const usePageStore: typeof import('./src/stores/page')['usePageStore']
+  const usePurchaseOrderStore: typeof import('./src/stores/purchaseOrder')['usePurchaseOrderStore']
   const useRoute: typeof import('vue-router')['useRoute']
   const useRouter: typeof import('vue-router')['useRouter']
   const useSlots: typeof import('vue')['useSlots']
@@ -73,4 +77,13 @@ declare global {
   // @ts-ignore
   export type { Component, ComponentPublicInstance, ComputedRef, ExtractDefaultPropTypes, ExtractPropTypes, ExtractPublicPropTypes, InjectionKey, PropType, Ref, VNode, WritableComputedRef } from 'vue'
   import('vue')
+  // @ts-ignore
+  export type { Supplier, Address, PaginatedResponse, Product, Packaging, ProductVariety, PurchaseOrder, PurchaseOrderItem, PurchaseOrderCart, PurchaseOrderItemCart } from '@/types'
+  import('@/types')
+  // @ts-ignore
+  export type { UnitEnum, StatesEnum } from './src/types/common'
+  import('./src/types/common')
+  // @ts-ignore
+  export type { PurchaseOrderStatusEnum } from './src/types/purchaseOrder'
+  import('./src/types/purchaseOrder')
 }

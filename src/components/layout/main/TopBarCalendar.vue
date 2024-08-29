@@ -6,6 +6,13 @@ const df = new DateFormatter('en-US', {
 })
 
 const dateStore = useDateStore()
+
+const { date, today } = storeToRefs(dateStore)
+const purchaseOrderStore = usePurchaseOrderStore()
+
+watch(date, async () => {
+  await purchaseOrderStore.fill()
+})
 </script>
 
 <template>
@@ -13,16 +20,11 @@ const dateStore = useDateStore()
     <PopoverTrigger as-child>
       <Button variant="outline">
         <iconify-icon icon="lucide:calendar" class="mr-2 size-4" />
-        {{ dateStore.date ? df.format(dateStore.date.toDate(getLocalTimeZone())) : 'Pick a date' }}
+        {{ date ? df.format(date.toDate(getLocalTimeZone())) : 'Pick a date' }}
       </Button>
     </PopoverTrigger>
     <PopoverContent class="w-auto p-0">
-      <Calendar
-        :default-value="dateStore.today"
-        :min-value="dateStore.today"
-        v-model="dateStore.date"
-        initial-focus
-      />
+      <Calendar :default-value="today" :min-value="today" v-model="date" initial-focus />
     </PopoverContent>
   </Popover>
 </template>
