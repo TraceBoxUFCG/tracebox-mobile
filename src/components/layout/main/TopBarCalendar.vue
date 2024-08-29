@@ -4,16 +4,17 @@ import { DateFormatter, getLocalTimeZone } from '@internationalized/date'
 const df = new DateFormatter('en-US', {
   dateStyle: 'long'
 })
-
 const dateStore = useDateStore()
-
 const { date, today } = storeToRefs(dateStore)
+
+const route = useRoute()
+const isDisabled = computed(() => route.path !== '/receivement')
 </script>
 
 <template>
   <Popover>
     <PopoverTrigger as-child>
-      <Button variant="outline">
+      <Button :disabled="isDisabled" variant="outline">
         <iconify-icon icon="lucide:calendar" class="mr-2 size-4" />
         {{ date ? df.format(date.toDate(getLocalTimeZone())) : 'Pick a date' }}
       </Button>
