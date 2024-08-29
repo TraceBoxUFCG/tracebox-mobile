@@ -24,7 +24,7 @@ watch(date, async () => {
       </Button>
     </PopoverTrigger>
     <PopoverContent class="w-auto p-0">
-      <Calendar :default-value="today" :min-value="today" v-model="date" initial-focus />
+      <Calendar :default-value="today" v-model="date" initial-focus />
     </PopoverContent>
   </Popover>
 </template>
