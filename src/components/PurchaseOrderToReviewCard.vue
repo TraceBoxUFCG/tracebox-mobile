@@ -2,6 +2,9 @@
 const props = defineProps<{
   purchaseOrder: PurchaseOrder
 }>()
+
+const purchaseOrderStore = usePurchaseOrderStore()
+purchaseOrderStatusMap
 </script>
 
 <template>
@@ -9,16 +12,19 @@ const props = defineProps<{
     <RouterLink to="/pedido">
       <CardHeader>
         <CardTitle>{{ props.purchaseOrder.supplier.business_name }}</CardTitle>
-        <CardDescription
-          >{{ props.purchaseOrder.items.length }} itens para receber
+        <CardDescription class="flex flex-col">
+          <span> Items: {{ props.purchaseOrder.items.length }} itens para receber </span>
+          <span> Status: {{ purchaseOrder.status }} </span>
         </CardDescription>
       </CardHeader>
     </RouterLink>
     <CardFooter class="flex justify-center gap-3">
-      <Button :disabled="purchaseOrder.status === 'RECEIVEMENT_STARTED'" class="w-full"
+      <Button
+        @click="purchaseOrderStore.startReceivement(purchaseOrder.id)"
+        :disabled="purchaseOrder.status !== 'CONFIRMED'"
+        class="w-full"
         >Iniciar</Button
       >
-      <Button :disabled="purchaseOrder.status === 'CONFIRMED'" class="w-full">Finalizar</Button>
     </CardFooter>
   </Card>
 </template>

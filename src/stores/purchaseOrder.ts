@@ -19,15 +19,14 @@ export const usePurchaseOrderStore = defineStore('purchase-order-store', {
     ) {
       const api = default_api
       const options = {
-        url: `${api.base_url}/purchases/purchase_order/`,
-        headers: api.headers,
+        ...api,
+        url: `${api.base_url}/receivement/purchase_order/`,
         params: {
           q: String(q),
           page: String(page),
           expected_arrival_date: String(expected_arrival_date?.toISOString().split('T')[0]),
           status: String(status)
-        },
-        disableRedirects: api.disableRedirects
+        }
       }
       const response: PaginatedResponse<PurchaseOrder> = (await CapacitorHttp.get(options)).data
 
@@ -39,20 +38,27 @@ export const usePurchaseOrderStore = defineStore('purchase-order-store', {
 
       const api = default_api
       const options = {
-        url: `${api.base_url}/purchases/purchase_order/`,
-        headers: api.headers,
-        disableRedirects: api.disableRedirects,
+        ...api,
+        url: `${api.base_url}/receivement/purchase_order/`,
         params: {
           expected_arrival_date: String(
             dateStore.date.toDate(getLocalTimeZone())?.toISOString().split('T')[0]
-          ),
-          status: 'CONFIRMED'
+          )
         }
       }
       const response: PaginatedResponse<PurchaseOrder> = (await CapacitorHttp.get(options)).data
 
       this.purchaseOrders = response.items
       this.purchaseOrdersResponse = response
+    },
+    async startReceivement(id: number) {
+      const api = default_api
+      const options = {
+        ...api,
+        url: `${api.base_url}/receivement/purchase_order/${id}/start/`
+      }
+      await CapacitorHttp.post(options)
+      await this.fill()
     }
   }
 })

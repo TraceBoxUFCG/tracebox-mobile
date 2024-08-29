@@ -1,6 +1,15 @@
 import type { Supplier } from './supplier'
 import type { ProductVariety } from './productVariety'
 
+export const purchaseOrderStatusMap: { [key in PurchaseOrderStatusEnum]: string } = {
+  CONFIRMED: 'A Receber',
+  RECEIVEMENT_STARTED: 'Recebimento iniciado',
+  RECEIVED: 'Recebimento finalizado',
+  DRAFT: 'Em criação',
+  LOTTED: 'Loteado',
+  LOTTING_STARTED: 'Loteamento iniciado'
+}
+
 export enum PurchaseOrderStatusEnum {
   DRAFT = 'DRAFT',
   CONFIRMED = 'CONFIRMED',
