@@ -1,7 +1,14 @@
 <script setup>
 const purchaseOrderStore = usePurchaseOrderStore()
 purchaseOrderStore.fill()
+const { date } = storeToRefs(useDateStore)
 const { purchaseOrders } = storeToRefs(purchaseOrderStore)
+
+watch(date, async () => {
+  console.log('MUDEI')
+
+  await purchaseOrderStore.fill()
+})
 </script>
 
 <template>

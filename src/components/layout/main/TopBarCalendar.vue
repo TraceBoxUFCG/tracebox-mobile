@@ -8,11 +8,6 @@ const df = new DateFormatter('en-US', {
 const dateStore = useDateStore()
 
 const { date, today } = storeToRefs(dateStore)
-const purchaseOrderStore = usePurchaseOrderStore()
-
-watch(date, async () => {
-  await purchaseOrderStore.fill()
-})
 </script>
 
 <template>

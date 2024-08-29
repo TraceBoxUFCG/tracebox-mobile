@@ -143,8 +143,6 @@ declare module 'vue' {
     SelectTrigger: typeof import('./src/components/ui/select/SelectTrigger.vue')['default']
     SelectValue: typeof import('./src/components/ui/select/SelectValue.vue')['default']
     Separator: typeof import('./src/components/ui/separator/Separator.vue')['default']
-    Sidebar: typeof import('./src/components/layout/main/Sidebar.vue')['default']
-    SideBarLinks: typeof import('./src/components/layout/main/SideBarLinks.vue')['default']
     SteppedForm: typeof import('./src/components/ui/stepped-form/SteppedForm.vue')['default']
     Stepper: typeof import('./src/components/ui/stepper/Stepper.vue')['default']
     StepperDescription: typeof import('./src/components/ui/stepper/StepperDescription.vue')['default']

@@ -5,7 +5,9 @@ export enum PurchaseOrderStatusEnum {
   DRAFT = 'DRAFT',
   CONFIRMED = 'CONFIRMED',
   RECEIVED = 'RECEIVED',
-  LOTTED = 'LOTTED'
+  LOTTED = 'LOTTED',
+  RECEIVEMENT_STARTED = 'RECEIVEMENT_STARTED',
+  LOTTING_STARTED = 'LOTTING_STARTED'
 }
 export interface PurchaseOrder {
   id?: number
