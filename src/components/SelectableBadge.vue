@@ -1,19 +1,13 @@
 <script setup lang="ts">
 import { cn } from '@/lib/utils'
-
-const isEnabled = ref(false)
+const active = defineModel<boolean>('active', { default: false })
 </script>
 
 <template>
   <Badge
-    @click="
-      () => {
-        isEnabled = !isEnabled
-      }
-    "
     :class="
       cn(
-        !isEnabled && 'bg-transparent border-primary text-primary',
+        !active && 'bg-transparent border-primary text-primary',
         'h-[30px] flex justify-center items-center'
       )
     "

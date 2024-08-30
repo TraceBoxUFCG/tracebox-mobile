@@ -6,11 +6,29 @@ interface Option {
 
 const props = defineProps<{
   options: Option[]
+  selectedValue: string
 }>()
+
+const emit = defineEmits(['update:selectedValue'])
+const selectedValueAux = toRef(props.selectedValue)
+
+const onSelect = (value: string) => {
+  emit('update:selectedValue', value)
+  selectedValueAux.value = value
+}
 </script>
 
 <template>
-  <SelectableBadge v-for="option in options" :key="option.value">
+  <SelectableBadge
+    :active="selectedValueAux == option.value"
+    @click="
+      () => {
+        onSelect(option.value)
+      }
+    "
+    v-for="option in options"
+    :key="option.value"
+  >
     {{ option.label }}
   </SelectableBadge>
 </template>

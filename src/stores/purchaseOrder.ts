@@ -5,7 +5,8 @@ import { default_api } from '@/api/http'
 export const usePurchaseOrderStore = defineStore('purchase-order-store', {
   state: () => {
     return {
-      purchaseOrder: [] as PurchaseOrder[]
+      purchaseOrder: [] as PurchaseOrder[],
+      status: 'CONFIRMED' as string
     }
   },
 
@@ -37,6 +38,11 @@ export const usePurchaseOrderStore = defineStore('purchase-order-store', {
       }
       await CapacitorHttp.post(options)
       await this.fill()
+    }
+  },
+  getters: {
+    filteredPurchaseOrders(): PurchaseOrder[] {
+      return this.purchaseOrder.filter((po: PurchaseOrder) => po.status === this.status)
     }
   }
 })
