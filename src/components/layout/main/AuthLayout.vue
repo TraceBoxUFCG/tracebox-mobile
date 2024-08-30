@@ -1,6 +1,5 @@
 <script setup lang="ts">
 const pageStore = usePageStore()
-const route = useRoute()
 </script>
 
 <template>
