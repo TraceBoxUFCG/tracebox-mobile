@@ -1,4 +1,7 @@
 <script setup lang="ts">
+import type { PurchaseOrder } from '@/types/purchaseOrder'
+import { purchaseOrderStatusMap } from '@/types/purchaseOrder'
+
 const props = defineProps<{
   purchaseOrder: PurchaseOrder
 }>()
@@ -13,8 +16,9 @@ purchaseOrderStatusMap
       <CardHeader>
         <CardTitle>{{ props.purchaseOrder.supplier.business_name }}</CardTitle>
         <CardDescription class="flex flex-col">
+          {{}}
           <span> Items: {{ props.purchaseOrder.items.length }} itens para receber </span>
-          <span> Status: {{ purchaseOrder.status }} </span>
+          <span> Status: {{ purchaseOrderStatusMap[purchaseOrder.status] }} </span>
         </CardDescription>
       </CardHeader>
     </RouterLink>

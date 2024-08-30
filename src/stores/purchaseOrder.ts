@@ -1,39 +1,19 @@
 import { getLocalTimeZone } from '@internationalized/date'
 import { CapacitorHttp } from '@capacitor/core'
 import { default_api } from '@/api/http'
+import { PurchaseOrderStatusEnum } from '@/types/purchaseOrder'
 
 export const usePurchaseOrderStore = defineStore('purchase-order-store', {
   state: () => {
     return {
-      purchaseOrders: [] as PurchaseOrder[],
-      purchaseOrdersResponse: {} as PaginatedResponse<PurchaseOrder>
+      startedReceivementPurchaseOrder: [] as PurchaseOrder[],
+      receivedPurchaseOrders: [] as PurchaseOrder[],
+      confirmedPurchaseOrder: [] as PurchaseOrder[]
     }
   },
 
   actions: {
-    async search(
-      page: number,
-      q?: string,
-      expected_arrival_date?: Date,
-      status?: PurchaseOrderStatusEnum
-    ) {
-      const api = default_api
-      const options = {
-        ...api,
-        url: `${api.base_url}/receivement/purchase_order/`,
-        params: {
-          q: String(q),
-          page: String(page),
-          expected_arrival_date: String(expected_arrival_date?.toISOString().split('T')[0]),
-          status: String(status)
-        }
-      }
-      const response: PaginatedResponse<PurchaseOrder> = (await CapacitorHttp.get(options)).data
-
-      this.purchaseOrders = response.items
-      this.purchaseOrdersResponse = response
-    },
-    async fill() {
+    async getPurchaseOrders(status: PurchaseOrderStatusEnum) {
       const dateStore = useDateStore()
 
       const api = default_api
@@ -43,13 +23,32 @@ export const usePurchaseOrderStore = defineStore('purchase-order-store', {
         params: {
           expected_arrival_date: String(
             dateStore.date.toDate(getLocalTimeZone())?.toISOString().split('T')[0]
-          )
+          ),
+          status: status
         }
       }
       const response: PaginatedResponse<PurchaseOrder> = (await CapacitorHttp.get(options)).data
-
-      this.purchaseOrders = response.items
-      this.purchaseOrdersResponse = response
+      return response
+    },
+    async getStartedReceivementPurchaseOrders() {
+      this.startedReceivementPurchaseOrder = (
+        await this.getPurchaseOrders(PurchaseOrderStatusEnum.RECEIVEMENT_STARTED)
+      ).items
+    },
+    async getReceivedPurchaseOrders() {
+      this.receivedPurchaseOrders = (
+        await this.getPurchaseOrders(PurchaseOrderStatusEnum.RECEIVED)
+      ).items
+    },
+    async getConfirmedPurchaseOrders() {
+      this.confirmedPurchaseOrder = (
+        await this.getPurchaseOrders(PurchaseOrderStatusEnum.CONFIRMED)
+      ).items
+    },
+    async fill() {
+      await this.getConfirmedPurchaseOrders()
+      await this.getReceivedPurchaseOrders()
+      await this.getStartedReceivementPurchaseOrders()
     },
     async startReceivement(id: number) {
       const api = default_api

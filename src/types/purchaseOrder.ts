@@ -19,7 +19,7 @@ export enum PurchaseOrderStatusEnum {
   LOTTING_STARTED = 'LOTTING_STARTED'
 }
 export interface PurchaseOrder {
-  id?: number
+  id: number
   expected_arrival_date: string
   status: PurchaseOrderStatusEnum
   supplier: Supplier

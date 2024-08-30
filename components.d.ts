@@ -130,6 +130,7 @@ declare module 'vue' {
     RangeCalendarHeading: typeof import('./src/components/ui/range-calendar/RangeCalendarHeading.vue')['default']
     RangeCalendarNextButton: typeof import('./src/components/ui/range-calendar/RangeCalendarNextButton.vue')['default']
     RangeCalendarPrevButton: typeof import('./src/components/ui/range-calendar/RangeCalendarPrevButton.vue')['default']
+    ReceivementNavBar: typeof import('./src/components/layout/main/ReceivementNavBar.vue')['default']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
     Select: typeof import('./src/components/ui/select/Select.vue')['default']

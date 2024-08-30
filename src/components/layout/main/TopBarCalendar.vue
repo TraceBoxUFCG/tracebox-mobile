@@ -8,7 +8,7 @@ const dateStore = useDateStore()
 const { date, today } = storeToRefs(dateStore)
 
 const route = useRoute()
-const isDisabled = computed(() => route.path !== '/receivement')
+const isDisabled = computed(() => !route.path.includes('/receivement'))
 </script>
 
 <template>
