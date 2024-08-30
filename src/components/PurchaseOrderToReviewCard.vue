@@ -12,7 +12,7 @@ purchaseOrderStatusMap
 
 <template>
   <Card class="w-[350px] hover:bg-muted/40">
-    <RouterLink to="/pedido">
+    <RouterLink :to="`/receivement/purchaseOrder/${purchaseOrder.id}`">
       <CardHeader>
         <CardTitle>{{ props.purchaseOrder.supplier.business_name }}</CardTitle>
         <CardDescription class="flex flex-col">

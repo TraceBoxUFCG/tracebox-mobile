@@ -1,6 +1,6 @@
 import { getLocalTimeZone } from '@internationalized/date'
 import { CapacitorHttp } from '@capacitor/core'
-import { default_api } from '@/api/http'
+import { defaultAPI } from '@/api/http'
 import { toast } from '@/components/ui/toast'
 
 export const usePurchaseOrderStore = defineStore('purchase-order-store', {
@@ -15,7 +15,7 @@ export const usePurchaseOrderStore = defineStore('purchase-order-store', {
     async getPurchaseOrders() {
       const dateStore = useDateStore()
 
-      const api = default_api
+      const api = defaultAPI
       const options = {
         ...api,
         url: `${api.base_url}/receivement/purchase_order/`,
@@ -32,7 +32,7 @@ export const usePurchaseOrderStore = defineStore('purchase-order-store', {
       this.purchaseOrder = (await this.getPurchaseOrders()).items
     },
     async startReceivement(id: number) {
-      const api = default_api
+      const api = defaultAPI
       const options = {
         ...api,
         url: `${api.base_url}/receivement/purchase_order/${id}/start/`
@@ -53,7 +53,7 @@ export const usePurchaseOrderStore = defineStore('purchase-order-store', {
       await this.fill()
     },
     async finishReceivement(id: number) {
-      const api = default_api
+      const api = defaultAPI
       const options = {
         ...api,
         url: `${api.base_url}/receivement/purchase_order/${id}/finish/`

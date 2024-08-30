@@ -1,4 +1,4 @@
-export const default_api = {
+export const defaultAPI = {
   base_url: import.meta.env.VITE_API_URL,
   headers: {
     'bypass-tunnel-reminder': 'true',
