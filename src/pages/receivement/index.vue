@@ -3,7 +3,7 @@ const dateStore = useDateStore()
 const purchaseOrderStore = usePurchaseOrderStore()
 purchaseOrderStore.fill()
 const { date } = storeToRefs(dateStore)
-const { confirmedPurchaseOrder } = storeToRefs(purchaseOrderStore)
+const { purchaseOrder } = storeToRefs(purchaseOrderStore)
 
 watch(date, async () => {
   await purchaseOrderStore.fill()
@@ -12,10 +12,10 @@ watch(date, async () => {
 
 <template>
   <div class="flex flex-col gap-5">
-    <span v-if="confirmedPurchaseOrder.length === 0">Sem ordens de compras não recebidas</span>
+    <span v-if="purchaseOrder.length === 0">Sem ordens de compra</span>
     <PurchaseOrderToReviewCard
-      :v-if="confirmedPurchaseOrder"
-      v-for="order in confirmedPurchaseOrder"
+      :v-if="purchaseOrder"
+      v-for="order in purchaseOrder"
       :key="order.id"
       :purchase-order="order"
     />
