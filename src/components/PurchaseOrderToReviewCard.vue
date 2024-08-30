@@ -16,7 +16,6 @@ purchaseOrderStatusMap
       <CardHeader>
         <CardTitle>{{ props.purchaseOrder.supplier.business_name }}</CardTitle>
         <CardDescription class="flex flex-col">
-          {{}}
           <span> Items: {{ props.purchaseOrder.items.length }} itens para receber </span>
           <span> Status: {{ purchaseOrderStatusMap[purchaseOrder.status] }} </span>
         </CardDescription>
@@ -24,10 +23,16 @@ purchaseOrderStatusMap
     </RouterLink>
     <CardFooter class="flex justify-center gap-3">
       <Button
+        v-if="purchaseOrder.status === 'CONFIRMED'"
         @click="purchaseOrderStore.startReceivement(purchaseOrder.id)"
-        :disabled="purchaseOrder.status !== 'CONFIRMED'"
         class="w-full"
         >Iniciar</Button
+      >
+      <Button
+        v-if="purchaseOrder.status === 'RECEIVEMENT_STARTED'"
+        @click="purchaseOrderStore.finishReceivement(purchaseOrder.id)"
+        class="w-full"
+        >Finalizar</Button
       >
     </CardFooter>
   </Card>

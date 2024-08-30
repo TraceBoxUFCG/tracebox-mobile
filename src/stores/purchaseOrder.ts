@@ -1,6 +1,7 @@
 import { getLocalTimeZone } from '@internationalized/date'
 import { CapacitorHttp } from '@capacitor/core'
 import { default_api } from '@/api/http'
+import { toast } from '@/components/ui/toast'
 
 export const usePurchaseOrderStore = defineStore('purchase-order-store', {
   state: () => {
@@ -36,7 +37,42 @@ export const usePurchaseOrderStore = defineStore('purchase-order-store', {
         ...api,
         url: `${api.base_url}/receivement/purchase_order/${id}/start/`
       }
-      await CapacitorHttp.post(options)
+      const response = await CapacitorHttp.post(options)
+
+      if (response.status !== 200) {
+        toast({
+          title: 'Falha na tentativa de iniciar recebimento',
+          description: `Não foi possivel iniciar o recebimento.`,
+          variant: 'destructive'
+        })
+      } else {
+        toast({
+          title: 'Recebimento inicializado com sucesso'
+        })
+      }
+      await this.fill()
+    },
+    async finishReceivement(id: number) {
+      const api = default_api
+      const options = {
+        ...api,
+        url: `${api.base_url}/receivement/purchase_order/${id}/finish/`
+      }
+
+      const response = await CapacitorHttp.post(options)
+
+      if (response.status !== 200) {
+        toast({
+          title: 'Falha na tentativa de finalizar recebimento',
+          description: `Não foi possivel finalizar o recebimento. Por favor, finalize o recebimento de todos os itens.`,
+          variant: 'destructive'
+        })
+      } else {
+        toast({
+          title: 'Recebimento finalizado com sucesso'
+        })
+      }
+
       await this.fill()
     }
   },
