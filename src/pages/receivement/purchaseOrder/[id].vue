@@ -2,6 +2,9 @@
 import { defaultAPI } from '@/api/http'
 import { CapacitorHttp } from '@capacitor/core'
 import type { PurchaseOrder } from '@/types/purchaseOrder'
+import { purchaseOrderStatusMap } from '@/types/purchaseOrder'
+
+const { startReceivement, finishReceivement } = usePurchaseOrderStore()
 const route = useRoute()
 const params = route.params as { id: string }
 
@@ -30,6 +33,18 @@ const getPurchaseOrder = async () => {
   purchaseOrder.value = response
 }
 
+const start = async () => {
+  await startReceivement(parseInt(params.id))
+  await getPurchaseOrder()
+  await getItems()
+}
+
+const finish = async () => {
+  await finishReceivement(parseInt(params.id))
+  await getPurchaseOrder()
+  await getItems()
+}
+
 onMounted(async () => {
   await getItems()
   await getPurchaseOrder()
@@ -37,7 +52,25 @@ onMounted(async () => {
 </script>
 
 <template>
-  <div>
-    <h1>{{ items }}</h1>
+  <div class="w-full">
+    <Card v-if="purchaseOrder" class="w-full">
+      <CardHeader>
+        <CardTitle class="flex justify-between">
+          <span>
+            {{ purchaseOrder?.supplier.business_name}}
+          </span>
+          <span>
+            #{{ purchaseOrder?.id}}
+          </span> 
+        </CardTitle>
+      </CardHeader>
+      <CardContent>
+        Status: {{ purchaseOrder && purchaseOrderStatusMap[purchaseOrder?.status]}}
+      </CardContent>
+      <CardFooter class="w-full">
+        <Button @click="start" class="w-full" v-if="purchaseOrder?.status === 'CONFIRMED'">Iniciar Recebimento</Button>
+        <Button @click="finish" class="w-full" v-if="purchaseOrder?.status === 'RECEIVEMENT_STARTED'">Finalizar Recebimento</Button>
+      </CardFooter>
+    </Card>
   </div>
 </template>
