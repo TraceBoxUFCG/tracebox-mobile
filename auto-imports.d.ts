@@ -7,6 +7,7 @@ export {}
 declare global {
   const EffectScope: typeof import('vue')['EffectScope']
   const PurchaseOrderStatusEnum: typeof import('./src/types/purchaseOrder')['PurchaseOrderStatusEnum']
+  const ReceivementItemStatus: typeof import('./src/types/receivementItem')['ReceivementItemStatus']
   const StatesEnum: typeof import('./src/types/common')['StatesEnum']
   const UnitEnum: typeof import('./src/types/common')['UnitEnum']
   const acceptHMRUpdate: typeof import('pinia')['acceptHMRUpdate']
@@ -89,4 +90,7 @@ declare global {
   // @ts-ignore
   export type { PurchaseOrderStatusEnum } from './src/types/purchaseOrder'
   import('./src/types/purchaseOrder')
+  // @ts-ignore
+  export type { ReceivementItemStatus } from './src/types/receivementItem'
+  import('./src/types/receivementItem')
 }

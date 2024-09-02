@@ -18,7 +18,7 @@ export const usePurchaseOrderStore = defineStore('purchase-order-store', {
       const api = defaultAPI
       const options = {
         ...api,
-        url: `${api.base_url}/receivement/purchase_order/`,
+        url: `${api.base_url}/receivement/purchase_order`,
         params: {
           expected_arrival_date: String(
             dateStore.date.toDate(getLocalTimeZone())?.toISOString().split('T')[0]
