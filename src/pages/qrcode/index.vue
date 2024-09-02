@@ -7,7 +7,10 @@ import {
 const scannedData = ref()
 const scanBarcode = async () => {
   const result = await CapacitorBarcodeScanner.scanBarcode({
-    hint: CapacitorBarcodeScannerTypeHint.QR_CODE
+    hint: CapacitorBarcodeScannerTypeHint.QR_CODE,
+    web: {
+      showCameraSelection: true
+    }
   })
   scannedData.value = result.ScanResult
 }

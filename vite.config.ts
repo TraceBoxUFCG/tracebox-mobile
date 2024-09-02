@@ -32,7 +32,18 @@ export default defineConfig({
         },
         {
           from: '@/types',
-          imports: [],
+          imports: [
+            'Supplier',
+            'Address',
+            'PaginatedResponse',
+            'Product',
+            'Packaging',
+            'ProductVariety',
+            'PurchaseOrder',
+            'PurchaseOrderItem',
+            'PurchaseOrderCart',
+            'PurchaseOrderItemCart'
+          ],
           type: true
         }
       ],
