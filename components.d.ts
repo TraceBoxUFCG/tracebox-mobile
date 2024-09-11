@@ -90,6 +90,7 @@ declare module 'vue' {
     DropdownMenuSubTrigger: typeof import('./src/components/ui/dropdown-menu/DropdownMenuSubTrigger.vue')['default']
     DropdownMenuTrigger: typeof import('./src/components/ui/dropdown-menu/DropdownMenuTrigger.vue')['default']
     FilterableDataTable: typeof import('./src/components/ui/filterable-datatable/FilterableDataTable.vue')['default']
+    FilterLabel: typeof import('./src/components/FilterLabel.vue')['default']
     FilterReceivement: typeof import('./src/components/FilterReceivement.vue')['default']
     FormControl: typeof import('./src/components/ui/form/FormControl.vue')['default']
     FormDescription: typeof import('./src/components/ui/form/FormDescription.vue')['default']

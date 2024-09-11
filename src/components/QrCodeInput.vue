@@ -18,7 +18,7 @@ const scanBarcode = async () => {
 
 <template>
   <div class="flex gap-5">
-    <Input class="border-border" />
+    <Input v-model:model-value="model" class="border-border" />
     <Button class="flex items-center justify-center" @click="scanBarcode">
       <iconify-icon icon="lucide:scan-qr-code" />
     </Button>

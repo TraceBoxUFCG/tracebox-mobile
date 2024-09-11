@@ -1,12 +1,12 @@
 <script setup>
 const dateStore = useDateStore()
-const lottingStore = useLottingStore()
-lottingStore.fill()
+const receivementStore = useReceivementStore()
+receivementStore.fill()
 const { date } = storeToRefs(dateStore)
-const { filteredPurchaseOrders, status } = storeToRefs(lottingStore)
+const { filteredPurchaseOrders, status } = storeToRefs(receivementStore)
 
 watch(date, async () => {
-  await lottingStore.fill()
+  await receivementStore.fill()
 })
 </script>
 
@@ -15,9 +15,9 @@ watch(date, async () => {
     <div class="flex justify-center gap-2">
       <FilterLabel
         :options="[
-          { label: 'Não Recebidos', value: 'CONFIRMED' },
-          { label: 'Em Recebimento', value: 'RECEIVEMENT_STARTED' },
-          { label: 'Recebidos', value: 'RECEIVED' }
+          { label: 'Recebidos', value: 'RECEIVED' },
+          { label: 'Em Loteamento', value: 'LOTTING_STARTED' },
+          { label: 'Loteados', value: 'LOTTED' }
         ]"
         v-model:selected-value="status"
       />
