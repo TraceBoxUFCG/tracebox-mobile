@@ -66,7 +66,7 @@ declare global {
   const useCssVars: typeof import('vue')['useCssVars']
   const useDateStore: typeof import('./src/stores/date')['useDateStore']
   const usePageStore: typeof import('./src/stores/page')['usePageStore']
-  const usePurchaseOrderStore: typeof import('./src/stores/purchaseOrder')['usePurchaseOrderStore']
+  const useReceivementStore: typeof import('./src/stores/receivement')['useReceivementStore']
   const useRoute: typeof import('vue-router')['useRoute']
   const useRouter: typeof import('vue-router')['useRouter']
   const useSlots: typeof import('vue')['useSlots']

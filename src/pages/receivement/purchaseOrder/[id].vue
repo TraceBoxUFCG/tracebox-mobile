@@ -5,7 +5,7 @@ import type { PurchaseOrder } from '@/types/purchaseOrder'
 import { purchaseOrderStatusMap } from '@/types/purchaseOrder'
 import type { ReceivementItem } from '@/types/receivementItem'
 
-const { startReceivement, finishReceivement } = usePurchaseOrderStore()
+const { startReceivement, finishReceivement } = useReceivementStore()
 const route = useRoute()
 const params = route.params as { id: string }
 

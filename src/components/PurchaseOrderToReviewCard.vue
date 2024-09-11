@@ -6,7 +6,7 @@ const props = defineProps<{
   purchaseOrder: PurchaseOrder
 }>()
 
-const purchaseOrderStore = usePurchaseOrderStore()
+const receivementStore = useReceivementStore()
 purchaseOrderStatusMap
 </script>
 
@@ -24,13 +24,13 @@ purchaseOrderStatusMap
     <CardFooter class="flex justify-center gap-3">
       <Button
         v-if="purchaseOrder.status === 'CONFIRMED'"
-        @click="purchaseOrderStore.startReceivement(purchaseOrder.id)"
+        @click="receivementStore.startReceivement(purchaseOrder.id)"
         class="w-full"
         >Iniciar</Button
       >
       <Button
         v-if="purchaseOrder.status === 'RECEIVEMENT_STARTED'"
-        @click="purchaseOrderStore.finishReceivement(purchaseOrder.id)"
+        @click="receivementStore.finishReceivement(purchaseOrder.id)"
         class="w-full"
         >Finalizar</Button
       >
