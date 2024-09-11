@@ -1,13 +1,13 @@
 <script setup lang="ts">
 import type { PurchaseOrder } from '@/types/purchaseOrder'
-import { purchaseOrderStatusMap } from '@/types/purchaseOrder'
+import { receivementOrderStatusMap } from '@/types/purchaseOrder'
 
 const props = defineProps<{
   purchaseOrder: PurchaseOrder
 }>()
 
 const receivementStore = useReceivementStore()
-purchaseOrderStatusMap
+receivementOrderStatusMap
 </script>
 
 <template>
@@ -17,7 +17,7 @@ purchaseOrderStatusMap
         <CardTitle>{{ props.purchaseOrder.supplier.business_name }}</CardTitle>
         <CardDescription class="flex flex-col">
           <span> Items: {{ props.purchaseOrder.items.length }} itens para receber </span>
-          <span> Status: {{ purchaseOrderStatusMap[purchaseOrder.status] }} </span>
+          <span> Status: {{ receivementOrderStatusMap[purchaseOrder.status] }} </span>
         </CardDescription>
       </CardHeader>
     </RouterLink>

@@ -25,7 +25,7 @@ watch(date, async () => {
 
     <div class="flex flex-col gap-5">
       <span v-if="filteredPurchaseOrders.length === 0">Sem ordens de compra</span>
-      <PurchaseOrderToReviewCard
+      <LottingPurchaseOrderCard
         :v-if="filteredPurchaseOrders"
         v-for="order in filteredPurchaseOrders"
         :key="order.id"
