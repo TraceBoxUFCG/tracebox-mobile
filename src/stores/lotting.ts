@@ -35,7 +35,7 @@ export const useLottingStore = defineStore('lotting-store', {
       const api = defaultAPI
       const options = {
         ...api,
-        url: `${api.base_url}/lotting/purchase_order/${id}/start/`
+        url: `${api.base_url}/lotting/purchase_order/${id}/start`
       }
       const response = await CapacitorHttp.post(options)
 
@@ -56,7 +56,7 @@ export const useLottingStore = defineStore('lotting-store', {
       const api = defaultAPI
       const options = {
         ...api,
-        url: `${api.base_url}/lotting/purchase_order/${id}/finish/`
+        url: `${api.base_url}/lotting/purchase_order/${id}/finish`
       }
 
       const response = await CapacitorHttp.post(options)

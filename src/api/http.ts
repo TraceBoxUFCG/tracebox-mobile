@@ -3,7 +3,8 @@ export const defaultAPI = {
   headers: {
     'bypass-tunnel-reminder': 'true',
     'Access-Control-Allow-Origin': '*',
-    'Content-Type': 'application/json'
+    'Content-Type': 'application/json',
+    'ngrok-skip-browser-warning': 'true'
   },
   disableRedirects: true
 }
