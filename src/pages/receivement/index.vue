@@ -1,12 +1,12 @@
 <script setup>
 const dateStore = useDateStore()
-const lottingStore = useLottingStore()
-lottingStore.fill()
+const receivementStore = useReceivementStore()
+receivementStore.fill()
 const { date } = storeToRefs(dateStore)
-const { filteredPurchaseOrders, status } = storeToRefs(lottingStore)
+const { filteredPurchaseOrders, status } = storeToRefs(receivementStore)
 
 watch(date, async () => {
-  await lottingStore.fill()
+  await receivementStore.fill()
 })
 </script>
 
@@ -25,7 +25,7 @@ watch(date, async () => {
 
     <div class="flex flex-col gap-5">
       <span v-if="filteredPurchaseOrders.length === 0">Sem ordens de compra</span>
-      <PurchaseOrderToReviewCard
+      <ReceivementPurchaseOrderCard
         :v-if="filteredPurchaseOrders"
         v-for="order in filteredPurchaseOrders"
         :key="order.id"
