@@ -6,8 +6,19 @@ const props = defineProps<{
   purchaseOrder: PurchaseOrder
 }>()
 
+const router = useRouter()
+
 const lottingStore = useLottingStore()
 receivementOrderStatusMap
+
+const startLotting = async () => {
+  await lottingStore.startLotting(props.purchaseOrder.id)
+  router.push(`/lotting/${props.purchaseOrder.id}`)
+}
+
+const finishLotting = async () => {
+  await lottingStore.fill()
+}
 </script>
 
 <template>
@@ -21,15 +32,12 @@ receivementOrderStatusMap
       </CardHeader>
     </RouterLink>
     <CardFooter class="flex justify-center gap-3">
-      <Button
-        v-if="purchaseOrder.status === 'RECEIVED'"
-        @click="lottingStore.startLotting(purchaseOrder.id)"
-        class="w-full"
+      <Button v-if="purchaseOrder.status === 'RECEIVED'" @click="startLotting" class="w-full"
         >Iniciar</Button
       >
       <Button
         v-if="purchaseOrder.status === 'LOTTING_STARTED'"
-        @click="lottingStore.finishLotting(purchaseOrder.id)"
+        @click="finishLotting"
         class="w-full"
         >Finalizar</Button
       >
