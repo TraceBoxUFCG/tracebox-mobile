@@ -42,7 +42,9 @@ export default defineConfig({
             'PurchaseOrder',
             'PurchaseOrderItem',
             'PurchaseOrderCart',
-            'PurchaseOrderItemCart'
+            'PurchaseOrderItemCart',
+            'Asset',
+            'AssetLot',
           ],
           type: true
         }

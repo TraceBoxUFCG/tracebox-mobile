@@ -3,7 +3,7 @@ import { CapacitorHttp } from '@capacitor/core'
 import { defaultAPI } from '@/api/http'
 import { toast } from '@/components/ui/toast'
 
-export const usePurchaseOrderStore = defineStore('purchase-order-store', {
+export const useReceivementStore = defineStore('purchase-order-store', {
   state: () => {
     return {
       purchaseOrder: [] as PurchaseOrder[],
@@ -35,7 +35,7 @@ export const usePurchaseOrderStore = defineStore('purchase-order-store', {
       const api = defaultAPI
       const options = {
         ...api,
-        url: `${api.base_url}/receivement/purchase_order/${id}/start/`
+        url: `${api.base_url}/receivement/purchase_order/${id}/start`
       }
       const response = await CapacitorHttp.post(options)
 
@@ -56,7 +56,7 @@ export const usePurchaseOrderStore = defineStore('purchase-order-store', {
       const api = defaultAPI
       const options = {
         ...api,
-        url: `${api.base_url}/receivement/purchase_order/${id}/finish/`
+        url: `${api.base_url}/receivement/purchase_order/${id}/finish`
       }
 
       const response = await CapacitorHttp.post(options)
@@ -84,5 +84,5 @@ export const usePurchaseOrderStore = defineStore('purchase-order-store', {
 })
 
 if (import.meta.hot) {
-  import.meta.hot.accept(acceptHMRUpdate(usePurchaseOrderStore, import.meta.hot))
+  import.meta.hot.accept(acceptHMRUpdate(useReceivementStore, import.meta.hot))
 }

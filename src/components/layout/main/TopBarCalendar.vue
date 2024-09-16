@@ -7,8 +7,9 @@ const df = new DateFormatter('en-US', {
 const dateStore = useDateStore()
 const { date, today } = storeToRefs(dateStore)
 
+const endpointsToEnableCalendar = ['/receivement', '/lotting']
 const route = useRoute()
-const isDisabled = computed(() => route.path !== ('/receivement'))
+const isDisabled = computed(() => !endpointsToEnableCalendar.includes(route.path))
 </script>
 
 <template>

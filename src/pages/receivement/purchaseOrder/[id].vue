@@ -2,10 +2,10 @@
 import { defaultAPI } from '@/api/http'
 import { CapacitorHttp } from '@capacitor/core'
 import type { PurchaseOrder } from '@/types/purchaseOrder'
-import { purchaseOrderStatusMap } from '@/types/purchaseOrder'
+import { receivementOrderStatusMap } from '@/types/purchaseOrder'
 import type { ReceivementItem } from '@/types/receivementItem'
 
-const { startReceivement, finishReceivement } = usePurchaseOrderStore()
+const { startReceivement, finishReceivement } = useReceivementStore()
 const route = useRoute()
 const params = route.params as { id: string }
 
@@ -64,7 +64,7 @@ onMounted(async () => {
         </CardTitle>
       </CardHeader>
       <CardContent>
-        Status: {{ purchaseOrder && purchaseOrderStatusMap[purchaseOrder?.status] }}
+        Status: {{ purchaseOrder && receivementOrderStatusMap[purchaseOrder?.status] }}
       </CardContent>
       <CardFooter class="w-full">
         <Button @click="start" class="w-full" v-if="purchaseOrder?.status === 'CONFIRMED'"
