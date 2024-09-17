@@ -13,7 +13,7 @@ receivementOrderStatusMap
 
 const startLotting = async () => {
   await lottingStore.startLotting(props.purchaseOrder.id)
-  router.push(`/lotting/${props.purchaseOrder.id}`)
+  router.push(`/lotting/purchaseOrder/${props.purchaseOrder.id}`)
 }
 
 const finishLotting = async () => {

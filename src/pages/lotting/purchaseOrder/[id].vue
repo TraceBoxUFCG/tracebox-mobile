@@ -72,6 +72,7 @@ const start = async () => {
   await startLotting(parseInt(params.id))
   await getPurchaseOrder()
   await getItems()
+  currentLot.value = getCurrentLot()
 }
 
 const finish = async () => {
