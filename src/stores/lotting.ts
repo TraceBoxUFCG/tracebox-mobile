@@ -7,7 +7,7 @@ export const useLottingStore = defineStore('lotting-store', {
   state: () => {
     return {
       purchaseOrder: [] as PurchaseOrder[],
-      status: 'CONFIRMED' as string
+      status: 'RECEIVED' as string
     }
   },
 
