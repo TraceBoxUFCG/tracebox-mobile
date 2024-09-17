@@ -11,7 +11,7 @@ receivementOrderStatusMap
 const router = useRouter()
 const startReceivement = async () => {
   await receivementStore.startReceivement(props.purchaseOrder.id)
-  router.push(`/receivement/${props.purchaseOrder.id}`)
+  router.push(`/receivement/purchaseOrder/${props.purchaseOrder.id}`)
 }
 
 const finishReceivement = async () => {
