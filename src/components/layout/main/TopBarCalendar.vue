@@ -21,7 +21,7 @@ const isDisabled = computed(() => !endpointsToEnableCalendar.includes(route.path
       </Button>
     </PopoverTrigger>
     <PopoverContent class="w-auto p-0">
-      <Calendar :default-value="today" v-model="date" initial-focus />
+      <Calendar :min-value="today" :default-value="today" v-model="date" initial-focus />
     </PopoverContent>
   </Popover>
 </template>
