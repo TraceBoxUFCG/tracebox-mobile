@@ -1,12 +1,12 @@
 <script setup>
 const dateStore = useDateStore()
-const receivementStore = useReceivementStore()
-receivementStore.fill()
+const lottingStore = useLottingStore()
+lottingStore.fill()
 const { date } = storeToRefs(dateStore)
-const { filteredPurchaseOrders, status } = storeToRefs(receivementStore)
+const { filteredPurchaseOrders, status } = storeToRefs(lottingStore)
 
 watch(date, async () => {
-  await receivementStore.fill()
+  await lottingStore.fill()
 })
 </script>
 

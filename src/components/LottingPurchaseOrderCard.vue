@@ -17,6 +17,7 @@ const startLotting = async () => {
 }
 
 const finishLotting = async () => {
+  await lottingStore.finishLotting(props.purchaseOrder.id)
   await lottingStore.fill()
 }
 </script>
